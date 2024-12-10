@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Form</title>
+</head>
+<body>
+
+
+<div>
+
+    <p>Bellow there is a form to submit new projects</p>
+
+    <form action="#" method="post" th:action="@{/project/new}" th:object="${emptyProject}">
+
+        <label for="title">Title</label>
+        <input id="title" type="text" th:field="*{title}"><br><br>
+
+        <label for="description">Description</label>
+        <textarea id="description" th:field="*{description}" rows="5" cols="40"></textarea><br><br>
+<!--        <input id="description" type="text" th:field="*{description}"><br><br>-->
+
+        <label for="reqFund">Required Funding</label>
+        <input id="reqFund" type="number" th:field="*{requiredFunding}"><br><br>
+
+        <button type="submit">Click to submit</button>
+    </form>
+
+</div>
+
+</body>
+</html>

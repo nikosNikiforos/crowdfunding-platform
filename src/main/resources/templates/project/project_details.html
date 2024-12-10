@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Details</title>
+
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Απόσταση μεταξύ των στοιχείων */
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .item strong {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            font-size: 1em;
+            line-height: 1.6;
+            word-wrap: break-word; /* Χωρίς να βγαίνει από το πλάτος */
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="item">
+        <strong>Title</strong>
+        <p th:text="${project.title}"></p>
+    </div>
+
+
+    <div class="item">
+        <strong>Required Funding</strong>
+        <p th:text="${project.requiredFunding}"></p>
+    </div>
+
+    <div class="item">
+        <strong>Funding till now</strong>
+        <p th:text="${project.totalFunding}"></p>
+    </div>
+
+    <div class="item">
+        <strong>Funding to go</strong>
+        <p th:text="${project.requiredFunding - project.totalFunding}"></p>
+    </div>
+
+    <div class="item">
+        <strong>Description</strong>
+        <p class="description" th:text="${project.description}"></p>
+    </div>
+
+    <div class="item">
+            <form action="#" method="post" th:action="@{/project/support/{id}(id=${project.id})}">
+                <p>Support if you want!!!!</p>
+                <div>
+                    <label for="amount">Amount</label>
+                    <input id="amount" type="number" name="amount" placeholder="Amount"><br><br>
+                </div>
+                <div>
+                    <label for="student">Select Supporter:</label>
+                    <select id="student" name="supId" required>
+                        <option value="" disabled selected>Select Supporter</option>
+                        <th:block th:each="sup : ${supList}">
+                            <option th:value="${sup.id}" th:text="${sup.lastName}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                    <button type="submit">Click to confirm</button>
+            </form>
+    </div>
+
+</div>
+
+
+</body>
+</html>

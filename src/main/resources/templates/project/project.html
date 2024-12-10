@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Project</title>
+
+
+<style>
+  .three-column-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .three-column-table th, .three-column-table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  .three-column-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  .three-column-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .three-column-table td:hover {
+    background-color: #f1f1f1;
+  }
+</style>
+
+</head>
+<body>
+
+<div>
+  <p>Bellow are the available projects</p>
+  <table class="three-column-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Funding</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="project: ${listProjects}">
+        <td th:text="${project.title}"></td>
+        <td th:text="${project.requiredFunding}"></td>
+        <td>
+          <a th:href="@{/project/details/{id}(id=${project.id})}" th:text="'Project details'"></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</body>
+</html>

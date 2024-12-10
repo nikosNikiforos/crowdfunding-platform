@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+
+<div>
+    <p>Bellow is the form to become supporter</p>
+    <form action="#" th:action="@{/supporter/new}" th:object="${emptySup}" method="post">
+
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" th:field="*{firstName}"><br><br>
+
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" th:field="*{lastName}"><br><br>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" th:field="*{email}"><br><br>
+
+        <label for="username">Username</label>
+        <input id="username" type="text" th:field="*{username}"><br><br>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" th:field="*{password}"><br><br>
+
+
+        <button type="submit">Click here</button>
+    </form>
+</div>
+
+</body>
+</html>

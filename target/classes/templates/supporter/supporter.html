@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Supporters</title>
+<style>
+
+  .three-column-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+  }
+
+  .three-column-table th, .three-column-table td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+  }
+
+  .three-column-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  }
+
+  .three-column-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+  }
+
+  .three-column-table td:hover {
+  background-color: #f1f1f1;
+  }
+
+  </style>
+</head>
+<body>
+
+<div>
+  <p>Bellow are the available Supporters!!</p>
+  <table class="three-column-table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="sup : ${supporters}">
+        <td th:text="${sup.firstName}"></td>
+        <td th:text="${sup.lastName}"></td>
+        <td th:text="${sup.email}"></td>
+        <td>
+          <a th:href="@{/supporter/details/{id}(id=${sup.id})}" th:text="'Supporter Details'"></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</body>
+</html>
+
